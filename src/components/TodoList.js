@@ -6,6 +6,12 @@ const TodoList = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.todos.items);
 
+  const handleDelete=(id)=>{
+    if(window.confirm("Are you sure ?")){
+      dispatch(deleteTodo(id))
+    }
+  }
+
   return (
     <ul className="todo-list">
       {/* <li className="completed">
@@ -26,7 +32,7 @@ const TodoList = () => {
               onChange={() => dispatch(toggle({ id: item.id }))}
             />
             <label>{item.title}</label>
-            <button className="destroy" onClick={()=>dispatch(deleteTodo(item.id))}></button>
+            <button className="destroy" onClick={()=>handleDelete(item.id)}></button>
           </div>
         </li>
       ))}
