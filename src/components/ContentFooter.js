@@ -2,14 +2,14 @@ import React from "react";
 
 const ContentFooter = () => {
   return (
-    <footer class="footer">
-      <span class="todo-count">
+    <footer className="footer">
+      <span className="todo-count">
         <strong>2</strong> items left
       </span>
 
-      <ul class="filters">
+      <ul className="filters">
         <li>
-          <a href="#/" class="selected">
+          <a href="#/" className="selected">
             All
           </a>
         </li>
@@ -21,7 +21,7 @@ const ContentFooter = () => {
         </li>
       </ul>
 
-      <button class="clear-completed">Clear completed</button>
+      <button className="clear-completed">Clear completed</button>
     </footer>
   );
 };
