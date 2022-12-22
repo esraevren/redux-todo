@@ -1,18 +1,26 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addTodo } from "../redux/todos/todosSlice";
+import { addTodoAsync } from "../redux/todos/todosSlice";
 
 const Form = () => {
   const [title, setTitle] = useState("");
 
   const dispatch = useDispatch();
+  const error=useSelector((state)=> state.todos.addNewTodoError)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    if(!title) return;
+
     e.preventDefault();
-    dispatch(addTodo({ id: nanoid(), title, completed: false }));
-    setTitle("")
+    await dispatch(addTodoAsync({ title }));
+    setTitle("");
   };
+
+  if(error) {
+    alert(error);
+    return;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
